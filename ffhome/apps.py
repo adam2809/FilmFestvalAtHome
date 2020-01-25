@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class FfhomeConfig(AppConfig):
+class FFHomeConfig(AppConfig):
     name = 'ffhome'
