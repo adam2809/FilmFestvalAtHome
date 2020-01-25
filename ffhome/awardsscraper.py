@@ -5,14 +5,14 @@ import requests
 url_template = Template('http://www.netogram.com/flims/display.cgi?starting_point=$start_index&search%3D1%26searchtype%3Dany%26searchtext%3D$festival%26column%3D3')
 
 festivals = ['oscar',
+             'australian',
              'bafta',
              'cesar',
              'berlin',
+             'globe',
              'venice',
              'cannes',
-             'australian',
              'sundance',
-             'globe',
             ]
 
 class Film:
