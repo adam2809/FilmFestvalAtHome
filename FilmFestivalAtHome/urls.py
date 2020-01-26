@@ -13,11 +13,12 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
-from ffhome.views import get_festivals,get_streaming_services
+from ffhome.views import *
 
 urlpatterns = [
-    url(r'^festivals/', get_festivals),
-    url(r'^filminfo/<str:name>', get_streaming_services),
+    path(r'festivals', get_festivals),
+    path(r'festival/<str:name>/<int:year>',get_films_in_festival_by_year),
+    path(r'filmstreaming/<str:name>', get_streaming_services),
 ]
