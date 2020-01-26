@@ -12,7 +12,7 @@ festivals = ['oscar',
              'globe',
              'venice',
              'cannes',
-             'sundance',
+             'sundance'
             ]
 
 class Film:
