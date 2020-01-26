@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from ffhome.views import get_festivals,get_streaming_services
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^festivals/', get_festivals),
+    url(r'^filminfo/<str:name>', get_streaming_services),
 ]
