@@ -20,5 +20,4 @@ from ffhome.views import *
 urlpatterns = [
     path(r'festivals', get_festivals),
     path(r'festival/<str:name>/<int:year>',get_films_in_festival_by_year),
-    path(r'filmstreaming/<str:name>', get_streaming_services),
 ]
