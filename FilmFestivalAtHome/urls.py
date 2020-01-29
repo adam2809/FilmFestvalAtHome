@@ -18,6 +18,6 @@ from django.contrib import admin
 from ffhome.views import *
 
 urlpatterns = [
-    path(r'festivals', get_festivals),
-    path(r'festival/<str:name>/<int:year>',get_films_in_festival_by_year),
+    path(r'api/festivals', get_festivals),
+    path(r'api/festival/<str:name>/<int:year>',get_films_in_festival_by_year),
 ]
