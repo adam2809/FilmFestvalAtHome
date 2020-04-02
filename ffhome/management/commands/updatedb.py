@@ -21,13 +21,19 @@ class Command(BaseCommand):
                           'Cannes International Film Festival',
                           'Sundance Film Festival',
                          ]:
-            Festival(name=fest_name).save()
 
+
+            try:
+                Festival(name=fest_name).save()
+            except Exception as e:
+                print(f'Could not save {fest_name}\nThe exception was:\n')
+                print(e)
 
     def updateFilms(self):
         Film.objects.all().delete()
 
         awards = get_awards_for_all_festivals()
+        print(awards)
 
         for i,fest in enumerate(awards):
             print(fest)
@@ -35,5 +41,6 @@ class Command(BaseCommand):
                 try:
                     f = Film(name=film.name,year=film.year,award=film.award,festival_id=i+1)
                     f.save()
-                except:
-                    print(f'This film could not have been saved:\n{film}')
+                except Exception as e:
+                    print(f'This film could not have been saved:\n{film}\nThe exception was:\n')
+                    print(e)
