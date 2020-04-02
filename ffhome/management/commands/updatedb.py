@@ -11,7 +11,8 @@ class Command(BaseCommand):
     def updateFestivals(self):
         Festival.objects.all().delete()
 
-        for fest_name in ['Academy Awards - OSCARS',
+        for i,fest_name in enumerate(
+                         ['Academy Awards - OSCARS',
                           'Australian Film Institute Awards',
                           'BAFTA Film Awards',
                           'CESAR Film Awards',
@@ -20,11 +21,11 @@ class Command(BaseCommand):
                           'Venice International Film Festival',
                           'Cannes International Film Festival',
                           'Sundance Film Festival',
-                         ]:
+                         ]):
 
 
             try:
-                Festival(name=fest_name).save()
+                Festival(id=i+1,name=fest_name).save()
             except Exception as e:
                 print(f'Could not save {fest_name}\nThe exception was:\n')
                 print(e)
@@ -33,14 +34,12 @@ class Command(BaseCommand):
         Film.objects.all().delete()
 
         awards = get_awards_for_all_festivals()
-        print(awards)
 
         for i,fest in enumerate(awards):
-            print(fest)
-            for film in awards[fest]:
+            for j, film in enumerate(awards[fest]):
                 try:
-                    f = Film(name=film.name,year=film.year,award=film.award,festival_id=i+1)
+                    f = Film(id=j+1,name=film.name,year=film.year,award=film.award,festival_id=i+1)
                     f.save()
                 except Exception as e:
-                    print(f'This film could not have been saved:\n{film}\nThe exception was:\n')
+                    print(f'This film could not have been saved:\n{film}\nThe exception was:')
                     print(e)
