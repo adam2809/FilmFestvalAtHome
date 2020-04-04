@@ -35,7 +35,6 @@ def parse_row(row):
 def get_awards_for_festival(name):
     awards = []
     i=1
-    print(name+'         <<<')
     while(True):
         res = requests.get(url_template.substitute(start_index=i,festival=name))
         soup = BeautifulSoup(res.text,features='lxml')
@@ -44,7 +43,6 @@ def get_awards_for_festival(name):
         rows = table.find_all('tr') #ResultSet
         for r in rows[1:]:
             awards.append(parse_row(r))
-            print(awards[-1])
 
         i += 20
         if len(rows) == 1:

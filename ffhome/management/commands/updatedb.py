@@ -27,7 +27,7 @@ class Command(BaseCommand):
             try:
                 Festival(id=i+1,name=fest_name).save()
             except Exception as e:
-                print(f'Could not save {fest_name}\nThe exception was:\n')
+                print(f'Could not save festival {fest_name}\nThe exception was:\n')
                 print(e)
 
     def updateFilms(self):
@@ -35,11 +35,14 @@ class Command(BaseCommand):
 
         awards = get_awards_for_all_festivals()
 
+        saved_films_count = 0
+
         for i,fest in enumerate(awards):
-            for j, film in enumerate(awards[fest]):
+            for film in awards[fest]:
                 try:
-                    f = Film(id=j+1,name=film.name,year=film.year,award=film.award,festival_id=i+1)
+                    f = Film(id=saved_films_count+1,name=film.name,year=film.year,award=film.award,festival_id=i+1)
                     f.save()
+                    saved_films_count+=1
                 except Exception as e:
                     print(f'This film could not have been saved:\n{film}\nThe exception was:')
                     print(e)
