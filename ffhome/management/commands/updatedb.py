@@ -1,4 +1,4 @@
-from django.core.management.base import BaseCommand
+from django.core.management.base_scraper import BaseCommand
 from ffhome.models import Film,Festival
 from ffhome.awardsscraper import get_awards_for_all_festivals
 
