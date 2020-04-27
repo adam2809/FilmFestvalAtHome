@@ -44,13 +44,12 @@ class NetogramScraper(BaseScraper):
             table = soup.find_all('table')[1] #Tag
             rows = table.find_all('tr') #ResultSet
             for r in rows[1:]:
-                print(self.parse_row(r).name)
                 awards.append(self.parse_row(r))
 
-                i += 20
-                if len(rows) == 1:
-                    break
-                    return awards
+            i += 20
+            if len(rows) == 1:
+                break
+        return awards
 
 
     def parse_row(self,row):
