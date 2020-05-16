@@ -20,4 +20,5 @@ from ffhome.views import *
 urlpatterns = [
     path(r'api/festivals', get_festivals),
     path(r'api/festival/<int:fest_id>',get_films_in_festival),
+    path(r'api/metrics/jw_query/<str:hit_or_miss>',jw_query_metrics)
 ]
